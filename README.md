@@ -1,4 +1,4 @@
-# Tarantool 1.6 graphite module
+# Tarantool 1.6+ graphite module
 
 ## Usage examples
 
