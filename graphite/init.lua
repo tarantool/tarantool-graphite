@@ -221,7 +221,8 @@ end
 
 _M.init = function(prefix_, host_, port_)
 	prefix = prefix_ or 'localhost.tarantool.'
-	host = host_ or 'nerv1.i'
+	-- Maybe better to throw an exception
+	host = host_ or 'localhost'
 	port = port_ or 2003
 
 	if initialized == false then
