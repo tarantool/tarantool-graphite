@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tarantool/graphite.svg?branch=master)](https://travis-ci.org/tarantool/graphite)
+
 # Tarantool 1.6+ graphite module
 
 ## Usage examples
