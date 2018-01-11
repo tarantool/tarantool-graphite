@@ -15,6 +15,6 @@ dependencies = {
 build = {
     type = 'builtin';
     modules = {
-        ['graphite'] = 'graphite.lua';
+        ['graphite'] = 'graphite/init.lua';
     }
 }
