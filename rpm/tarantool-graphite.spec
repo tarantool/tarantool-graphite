@@ -27,4 +27,5 @@ rm -rf %{buildroot}
 
 %files
 %dir %{_datadir}/tarantool/graphite/
+%{_datadir}/tarantool/graphite/init.lua
 %doc README.md
