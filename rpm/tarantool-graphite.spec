@@ -1,5 +1,5 @@
 Name: tarantool-graphite
-Version: 0.0.1
+Version: 0.0.2
 Release: 1%{?dist}
 Summary: Tarantool module for pushing basic and custom metrics into graphite
 Group: Applications/Databases
