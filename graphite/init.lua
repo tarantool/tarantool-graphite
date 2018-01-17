@@ -238,7 +238,7 @@ _M.init = function(prefix_, host_, port_)
 					local ostats_net = box.stat.net()
 					local nt = fiber.time()
 
-					st = 60 - (nt - t)
+					local st = 60 - (nt - t)
 					fiber.sleep(st)
 
 					local stats_box = box.stat()
