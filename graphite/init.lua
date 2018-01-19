@@ -263,11 +263,11 @@ _M.init = function(prefix_, host_, port_)
 end
 
 _M.configure = function(config)
-	if config['send_interval'] ~= null then
+	if config['send_interval'] then
 		sint = config['send_interval']
 	end
 
-	if config['collect_interval'] ~= null then
+	if config['collect_interval'] then
 		cint = config['collect_interval']
 	end
 end
