@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 - Fix "assign to undeclared variable" runtime error
-- Fix rpm spec to include initialiation file
+- Fix rpm spec to include initialization file
 
 ## [0.0.1] - 2018-01-11
 

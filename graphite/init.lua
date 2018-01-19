@@ -10,6 +10,10 @@ local sock = nil
 local host = ''
 local port = 0
 local prefix = ''
+--- Interval in seconds to send metrics to graphite
+local sint = 60
+--- Interval in seconds for collecting metrics from a system
+local cint = 1
 
 local METRIC_SEC_TIMER = 0
 local METRIC_SUM_PER_MIN = 1
@@ -205,7 +209,7 @@ local function collect_stats()
 			local values = metric[5]
 			local metric_fn = metric[6]
 
-			values[cnt % 60 + 1] = metric_fn()
+			values[cnt % sint + 1] = metric_fn()
 			metric[3] = cnt + 1
 		end
 	end
@@ -230,7 +234,7 @@ _M.init = function(prefix_, host_, port_)
 					local ostats_net = box.stat.net()
 					local nt = fiber.time()
 
-					local st = 60 - (nt - t)
+					local st = sint - (nt - t)
 					fiber.sleep(st)
 
 					local stats_box = box.stat()
@@ -246,7 +250,7 @@ _M.init = function(prefix_, host_, port_)
 			local cf = fiber.create(function()
 					while true do
 						collect_stats()
-						fiber.sleep(1)
+						fiber.sleep(cint)
 					end
 				end
 			)
@@ -256,6 +260,20 @@ _M.init = function(prefix_, host_, port_)
 
 		initialized = true
 	end
+end
+
+_M.configure = function(config)
+	if config['send_interval'] ~= null then
+		sint = config['sending_interval']
+	end
+
+	if config['poll_interval'] ~= null then
+		cint = config['poll_interval']
+	end
+end
+
+_M.metrics = function()
+	return metrics
 end
 
 _M.sum = function(first, last, values, dt)
