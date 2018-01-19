@@ -264,11 +264,11 @@ end
 
 _M.configure = function(config)
 	if config['send_interval'] ~= null then
-		sint = config['sending_interval']
+		sint = config['send_interval']
 	end
 
-	if config['poll_interval'] ~= null then
-		cint = config['poll_interval']
+	if config['collect_interval'] ~= null then
+		cint = config['collect_interval']
 	end
 end
 
