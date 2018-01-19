@@ -13,6 +13,15 @@ graphite.init('localhost.1_instance.', '192.168.1.2', 3010)
 
 ## API
 
+### Configuration
+
+```lua
+--- Defaults are:
+--- send_interval = 60
+--- collect_interval = 1
+graphite.configure({collect_interval = 5, send_interval = 30})
+```
+
 ### Metrics
 
 ```lua
