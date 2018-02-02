@@ -40,8 +40,8 @@ local function send_metrics(ts, dt)
 			local values = metric[5]
 			local aggr_fn = metric[7]
 
-			if cnt > prev_cnt + 60 then
-				prev_cnt = cnt - 60
+			if cnt > prev_cnt + sint then
+				prev_cnt = cnt - sint
 			end
 
 			if cnt ~= prev_cnt then
@@ -280,7 +280,7 @@ _M.sum = function(first, last, values, dt)
 	local res = 0
 	local i = first
 	while i <= last do
-		res = res + values[i % 60 + 1]
+		res = res + values[i % sint + 1]
 		i = i + 1
 	end
 	return res
@@ -291,7 +291,7 @@ _M.sum_per_sec = function(first, last, values, dt)
 	if dt ~= 0 then
 		local i = first
 		while i <= last do
-			res = res + values[i % 60 + 1]
+			res = res + values[i % sint + 1]
 			i = i + 1
 		end
 		res = res / dt
@@ -303,7 +303,7 @@ _M.max = function(first, last, values, dt)
 	local res = nil
 	local i = first
 	while i <= last do
-		local v = values[i % 60 + 1]
+		local v = values[i % sint + 1]
 		if res == nil or v > res then
 			res = v
 		end
@@ -316,7 +316,7 @@ _M.min = function(first, last, values, dt)
 	local res = nil
 	local i = first
 	while i <= last do
-		local v = values[i % 60 + 1]
+		local v = values[i % sint + 1]
 		if res == nil or v < res then
 			res = v
 		end
@@ -326,7 +326,7 @@ _M.min = function(first, last, values, dt)
 end
 
 _M.last = function(first, last, values, dt)
-	return values[last % 60 + 1]
+	return values[last % sint + 1]
 end
 
 _M.add_sec_metric = function(name, metric_fn, aggr_fn)
