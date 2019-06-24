@@ -1,3 +1,7 @@
+# DEPRECATED
+
+### Please note, this project is deprecated and no longer being maintained, please use [metrics/graphite](https://github.com/tarantool/metrics/tree/master/metrics/plugins/graphite).
+
 [![Build Status](https://travis-ci.org/tarantool/graphite.svg?branch=master)](https://travis-ci.org/tarantool/graphite)
 
 # Tarantool 1.6+ graphite module
